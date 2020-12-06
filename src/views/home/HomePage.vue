@@ -4,6 +4,7 @@
     <div class="propaganda">
       <a><img src="../../assets/img/propaganda.jpg"/></a>
     </div>
+
     <!-- 搜索框 -->
     <div class="serach">
       <el-row>
