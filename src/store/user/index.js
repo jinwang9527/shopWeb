@@ -107,6 +107,15 @@ const actions = {
     }).catch(error =>{
       reject(error)
     })
+  },
+  FedLogOut({commit}){
+    return new Promise((resolve, reject) => {
+      commit('SET_TOKEN',null);
+      setToken(null);
+      resolve()
+    }).catch(error =>{
+      reject(error)
+    })
   }
 };
 

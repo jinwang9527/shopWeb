@@ -24,6 +24,10 @@
           <a> <i class="el-icon-shopping-cart-2" style="color: red;font-weight:bold;"></i> 购物车</a>
           &nbsp; &nbsp;
           <a>收藏夹</a>
+          &nbsp;&nbsp;
+          <router-link to='/onlineShop' style="margin-top: -16px;">
+            <a>免费开店</a>
+          </router-link>
         </el-col>
       </el-row>
     </div>

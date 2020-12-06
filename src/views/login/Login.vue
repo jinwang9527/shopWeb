@@ -60,6 +60,7 @@
 <script>
 
   import { mapActions } from 'vuex'
+  import {startLoading} from "../../utils/common";
 
   export default {
     name:'login',
@@ -67,8 +68,8 @@
       return {
         activeName: 'first',
         form:{
-          account:null,
-          password:null,
+          account:'19866986467',
+          password:'123456789',
           loginSign:'0',
         },
         rules:{
@@ -89,8 +90,10 @@
       onSubmit(formName){
         this.$refs[formName].validate(valid =>{
           if (valid){
+           let loading =  startLoading({app:this,text:'登陆中........'});
             this.$store.dispatch('Login',this.form).then(() =>{
-              this.$router.push({ path: '/home/homePage' })
+              this.$router.push({ path: '/home/homePage' });
+              loading.close()
             }).catch(error =>{
               this.$router.push({ path: '/' })
             })

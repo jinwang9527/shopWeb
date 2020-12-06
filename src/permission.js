@@ -10,7 +10,7 @@ router.beforeEach((to, from, next) => {
   NProgress.start();
   if (getToken()) {
     if (to.path === '/login' || to.path === '/') {
-      NProgress.done()
+      NProgress.done();
       next()
     } else {
       // 没有用户信息
@@ -20,12 +20,12 @@ router.beforeEach((to, from, next) => {
             store.dispatch('getRoutes', role).then(routes => {
               console.log('routes = ', routes);
               router.addRoutes(routes);
-              next({ ...to, replace: true })
+              next({ ...to, replace: true });
               NProgress.done()
             }).catch(() => {
               store.dispatch('FedLogOut').then(() => {
-                errorMessage('验证失败,请重新登录')
-                next({path: '/login'})
+                errorMessage('验证失败,请重新登录');
+                next({path: '/login'});
                 NProgress.done()
               })
             });
@@ -49,7 +49,6 @@ router.beforeEach((to, from, next) => {
       }
     }
   } else {
-    console.log('whiteList.indexOf(to.path) = ', to.path, whiteList.indexOf(to.path))
     if (whiteList.indexOf(to.path) !== -1) {
       next()
     } else {
