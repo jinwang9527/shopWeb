@@ -86,7 +86,7 @@
 
   import {obtainShortMessageVerification, register} from "../../api/register";
   import {errorMessage, successMessage} from "../../utils/Message";
-  import {md5} from "../../utils/common";
+  import {md5, startLoading} from "../../utils/common";
 
   export default {
     name: 'register',
@@ -122,6 +122,7 @@
       onSubmit() {
         this.$refs['sizeForm'].validate((valid) => {
           if (valid) {
+            let loading =  startLoading({app:this,text:'注册中，请稍等........'});
             return new Promise((resolve, reject) => {
               register({
                 clientName: this.sizeForm.clientName,
@@ -130,9 +131,8 @@
                 verificationCode: this.sizeForm.verificationCode
               }).then(response => {
                 successMessage('注册成功！');
-                this.$router.push({
-                  path: '/',
-                })
+                loading.close();
+                this.$router.push({path: '/',})
               })
             })
           } else {
@@ -143,9 +143,11 @@
 
       sendShortMessageVerification() {
         if (!this.sizeForm.phone) return errorMessage('请输入电话号码！');
+        let loading =  startLoading({app:this,text:'获取验证短信中........'});
         return new Promise((resolve, reject) => {
           obtainShortMessageVerification({phone: this.sizeForm.phone}).then(response => {
             successMessage('验证码已发送！');
+            loading.close();
             this.sizeForm.isReissue = false;
             let app = this;
             let clearTime = setInterval(function () {
