@@ -108,6 +108,7 @@ const actions = {
       reject(error)
     })
   },
+
   FedLogOut({commit}){
     return new Promise((resolve, reject) => {
       commit('SET_TOKEN',null);
