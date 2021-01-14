@@ -88,7 +88,7 @@
                 class="video-js vjs-big-play-centered vjs-fluid"
               >
                 <source
-                  src="../../assets/video/music.mp4"
+                  :src=process.env.FTP_VIDEO+'/music.mp4'
                   type="video/mp4"
                 >
               </video>

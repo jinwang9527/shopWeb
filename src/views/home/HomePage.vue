@@ -31,11 +31,26 @@
           </el-row>
         </el-col>
       </el-row>
+
+
+
+
+
     </div>
 
     <!-- 商品展示 -->
-    <div class="exhibition">
-      1
+    <div class="exhibition" style="border: 1px solid red;margin: 0 auto">
+      <div style="margin: 0 auto;width: 1000px;height: 300px">
+        <el-row>
+          <el-col :span="5" style="border: 1px solid red">
+            1
+          </el-col>
+
+          <el-col :span="15" style="border: 1px solid red">
+            222
+          </el-col>
+        </el-row>
+      </div>
     </div>
   </div>
 </template>
